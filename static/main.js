@@ -8,5 +8,5 @@ for (let tower of data) {
         name = tower[1];
     }
     
-    document.getElementById("main-list").innerHTML += `<li>${name}</li>`;
+    document.getElementById("main-list").innerHTML += `<div class="list-item">${name}</div>`;
 }

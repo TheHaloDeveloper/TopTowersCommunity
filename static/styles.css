@@ -1,11 +1,31 @@
 body {
     margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
 }
 
 #main-list {
-    width: 30%;
+    width: 25%;
     height: 100vh;
-    background-color: red;
+    background-color: #1e1e2f;
     margin: 0;
-    overflow: scroll;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    scrollbar-width: thin;
+    scrollbar-color: #555 #1e1e2f;
+}
+
+.list-item {
+    padding: 15px 25px;
+    background-color: #2a2a3b;
+    color: #ffffff;
+    border-bottom: 1px solid #3a3a4d;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.list-item:hover {
+    background-color: #3e3e55;
 }
