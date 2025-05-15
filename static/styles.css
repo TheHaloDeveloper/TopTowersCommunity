@@ -7,7 +7,6 @@ body {
 #main-list {
     width: 25%;
     height: 100vh;
-    background-color: #1e1e2f;
     margin: 0;
     overflow-y: auto;
     list-style: none;
