@@ -14,12 +14,11 @@ url = f"https://sheets.googleapis.com/v4/spreadsheets/{SHEET_ID}/values/{RANGE}?
 response = requests.get(url)
 values = response.json().get("values", [])
 
-data = [row for row in values if any(row)][2:]
-print(data)
+data = {"data": [row for row in values if any(row)][2:]}
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index.html", data=data)
 
 if __name__ == "__main__":
     app.run()
