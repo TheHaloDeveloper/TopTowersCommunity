@@ -8,7 +8,14 @@ app = Flask(__name__)
 
 API_KEY = os.getenv("GOOGLE_SHEETS_API_KEY")
 SHEET_ID = "1bxhj0Xtixkpo_BtzsnIg-qwLTA7qdb7Y6fursQjRZKM"
-RANGE = "Main List!A:N"
+RANGE = "Main List!B:N"
+
+url = f"https://sheets.googleapis.com/v4/spreadsheets/{SHEET_ID}/values/{RANGE}?key={API_KEY}"
+response = requests.get(url)
+values = response.json().get("values", [])
+
+data = [row for row in values if any(row)][2:]
+print(data)
 
 @app.route("/")
 def home():
