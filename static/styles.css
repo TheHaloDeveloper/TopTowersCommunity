@@ -8,7 +8,7 @@ body {
     background-color: rgb(20, 20, 20);
 }
 
-#main-list {
+#list {
     width: 25%;
     height: calc(100vh - var(--navbar-height));
     margin: 0;
@@ -41,7 +41,7 @@ body {
     min-width: 40px;
 }
 
-#main-list > .list-item:nth-child(-n+3) {
+#list > .list-item:nth-child(-n+3) {
     font-weight: bold;
 }
 

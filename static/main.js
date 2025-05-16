@@ -34,30 +34,41 @@ function getDifficultyName(diff) {
     return difficulties[Math.floor(diff)]
 }
 
-let diff;
-for (let tower of data) {
-    let name;
-    try {
-        name = tower[1].split("(")[1].replace(")", "");
-    } catch {
-        name = tower[1];
-    }
-    
-    if (tower[3]) {
-        diff = getDifficultyName(parseFloat(tower[3]))
-    }
-    
-    document.getElementById("main-list").innerHTML += `
-        <div class="list-item" style="color: rgb(${getColor(parseInt(tower[0]), diff)}); background-color: ${colors[diff]}">
-            <span class="rank">#${tower[0]}</span>&emsp;
-            <span>${name}</span>
-        </div>
-    `;
-}
-
+let list = "main";
 document.querySelectorAll('#navbar-pages div').forEach(el => {
     el.addEventListener('click', () => {
         document.querySelectorAll('#navbar-pages div').forEach(d => d.classList.remove('active'));
         el.classList.add('active');
+        let clicked = el.innerHTML.split(" ")[0].toLowerCase();
+        if (clicked != list) {
+            list = clicked;
+            populateList();
+        }
     });
 });
+
+function populateList() {
+    let diff;
+    document.getElementById("list").innerHTML = "";
+    
+    for (let tower of data[list]) {
+        let name;
+        try {
+            name = tower[1].split("(")[1].replace(")", "");
+        } catch {
+            name = tower[1];
+        }
+        
+        if (tower[3]) {
+            diff = getDifficultyName(parseFloat(tower[3]))
+        }
+        
+        document.getElementById("list").innerHTML += `
+            <div class="list-item" style="color: rgb(${getColor(parseInt(tower[0]), diff)}); background-color: ${colors[diff]}">
+                <span class="rank">#${tower[0]}</span>&emsp;
+                <span>${name}</span>
+            </div>
+        `;
+    }
+}
+populateList();
