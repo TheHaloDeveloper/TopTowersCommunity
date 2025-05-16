@@ -18,6 +18,7 @@ let colors = {
     "nil": "#65666D"
 }
 
+let white_diffs = ["Terrifying", "Catastrophic"];
 function getColor(rank, diff) {
     if (rank == 1) {
         return "212, 188, 48";
@@ -25,8 +26,10 @@ function getColor(rank, diff) {
         return "136, 136, 136";
     } else if (rank == 3) {
         return "179, 125, 81";
+    } else if (white_diffs.includes(diff)) {
+        return "0, 0, 0"
     } else {
-        return diff == "Catastrophic" ? "0, 0, 0" : "255, 255, 255";
+        return "255, 255, 255";
     }
 }
 

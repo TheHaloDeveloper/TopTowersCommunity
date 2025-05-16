@@ -10,7 +10,7 @@ def getList(name):
     url = f"https://sheets.googleapis.com/v4/spreadsheets/1bxhj0Xtixkpo_BtzsnIg-qwLTA7qdb7Y6fursQjRZKM/values/{name} List!B:N?key={os.getenv("GOOGLE_SHEETS_API_KEY")}"
     response = requests.get(url)
     values = response.json().get("values", [])
-    return [row for row in values if any(row)][2:]
+    return [row for row in values if any(cell.strip() for cell in row)][2:]
 
 data = {
     "main": getList("Main"),
