@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f4;
+    background-color: rgb(20, 20, 20);
 }
 
 #main-list {
@@ -9,9 +9,10 @@ body {
     height: 100vh;
     margin: 0;
     overflow-y: auto;
+    overflow-x: hidden;
     list-style: none;
     padding: 0;
-    background-color: #1e1e2f;
+    background-color: rgb(20, 20, 20);
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     scrollbar-width: thin;
     scrollbar-color: #666 #1e1e2f;
@@ -28,11 +29,14 @@ body {
 }
 
 .list-item:hover {
-    background-color: rgba(255, 255, 255, 0.08);
     transform: translateX(5px);
 }
 
 .rank {
     font-weight: bold;
     min-width: 40px;
+}
+
+#main-list > .list-item:nth-child(-n+3) {
+    font-weight: bold;
 }
