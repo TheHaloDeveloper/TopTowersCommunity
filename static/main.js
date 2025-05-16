@@ -47,10 +47,10 @@ document.querySelectorAll('#navbar-pages div').forEach(el => {
     });
 });
 
+let diff;
 function populateList() {
-    let diff;
     document.getElementById("list").innerHTML = "";
-    
+
     for (let tower of data[list]) {
         let name;
         try {
@@ -63,10 +63,16 @@ function populateList() {
             diff = getDifficultyName(parseFloat(tower[3]))
         }
         
+        let extra = "";
+        let rank = tower[0];
+        if (rank <= 3) {
+            extra = 'class="podium"';
+        }
+
         document.getElementById("list").innerHTML += `
-            <div class="list-item" style="color: rgb(${getColor(parseInt(tower[0]), diff)}); background-color: ${colors[diff]}">
-                <span class="rank">#${tower[0]}</span>&emsp;
-                <span>${name}</span>
+            <div class="list-item" style="color: rgb(${getColor(parseInt(rank), diff)}); background-color: ${colors[diff]}">
+                <span class="rank">#${rank}</span>&emsp;
+                <span ${extra}>${name}</span>
             </div>
         `;
     }
