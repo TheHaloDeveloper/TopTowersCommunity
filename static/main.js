@@ -56,3 +56,10 @@ for (let tower of data) {
         </div>
     `;
 }
+
+document.querySelectorAll('#navbar-pages div').forEach(el => {
+    el.addEventListener('click', () => {
+        document.querySelectorAll('#navbar-pages div').forEach(d => d.classList.remove('active'));
+        el.classList.add('active');
+    });
+});
