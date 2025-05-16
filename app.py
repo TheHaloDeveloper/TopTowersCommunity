@@ -6,15 +6,16 @@ load_dotenv()
 
 app = Flask(__name__)
 
-API_KEY = os.getenv("GOOGLE_SHEETS_API_KEY")
-SHEET_ID = "1bxhj0Xtixkpo_BtzsnIg-qwLTA7qdb7Y6fursQjRZKM"
-RANGE = "Main List!B:N"
+def getList(name):
+    url = f"https://sheets.googleapis.com/v4/spreadsheets/1bxhj0Xtixkpo_BtzsnIg-qwLTA7qdb7Y6fursQjRZKM/values/{name} List!B:N?key={os.getenv("GOOGLE_SHEETS_API_KEY")}"
+    response = requests.get(url)
+    values = response.json().get("values", [])
+    return [row for row in values if any(row)][2:]
 
-url = f"https://sheets.googleapis.com/v4/spreadsheets/{SHEET_ID}/values/{RANGE}?key={API_KEY}"
-response = requests.get(url)
-values = response.json().get("values", [])
-
-data = {"data": [row for row in values if any(row)][2:]}
+data = {
+    "main": getList("Main"),
+    "legacy": getList("Legacy")
+}
 
 @app.route("/")
 def home():

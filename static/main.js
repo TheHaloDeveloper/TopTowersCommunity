@@ -1,5 +1,3 @@
-data = data["data"];
-
 let difficulties = {
     8: "Insane",
     9: "Extreme",
