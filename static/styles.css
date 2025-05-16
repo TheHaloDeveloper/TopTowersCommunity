@@ -11,20 +11,28 @@ body {
     overflow-y: auto;
     list-style: none;
     padding: 0;
+    background-color: #1e1e2f;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     scrollbar-width: thin;
-    scrollbar-color: #555 #1e1e2f;
+    scrollbar-color: #666 #1e1e2f;
 }
 
 .list-item {
     padding: 15px 25px;
-    background-color: #2a2a3b;
-    color: #ffffff;
-    border-bottom: 1px solid #3a3a4d;
-    transition: background-color 0.2s ease;
+    border-bottom: 1px solid #2c2c3c;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s ease;
 }
 
 .list-item:hover {
-    background-color: #3e3e55;
+    background-color: rgba(255, 255, 255, 0.08);
+    transform: translateX(5px);
+}
+
+.rank {
+    font-weight: bold;
+    min-width: 40px;
 }
