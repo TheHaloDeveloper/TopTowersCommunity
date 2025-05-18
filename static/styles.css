@@ -114,6 +114,10 @@ body {
     transform: translateX(-50%) scaleX(1);
 }
 
+#extra {
+    line-height: 5px;
+}
+
 #info {
     width: 75%;
     height: calc(100vh - var(--navbar-height));
