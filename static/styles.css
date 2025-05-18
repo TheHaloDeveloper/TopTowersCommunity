@@ -14,7 +14,6 @@ body {
     margin: 0;
     overflow-y: auto;
     overflow-x: hidden;
-    list-style: none;
     padding: 0;
     background-color: rgb(20, 20, 20);
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
@@ -65,7 +64,7 @@ body {
 #spreadsheet-link {
     color: white;
     font-size: 20px;
-    text-decoration: underline;
+    text-decoration: none;
     cursor: pointer;
     margin-right: 50px;
 }
@@ -113,4 +112,20 @@ body {
 #navbar-pages .active::after {
     background-color: #4aa4ff;
     transform: translateX(-50%) scaleX(1);
+}
+
+#info {
+    width: 75%;
+    height: calc(100vh - var(--navbar-height));
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    scrollbar-width: thin;
+    scrollbar-color: #666 #1e1e2f;
+    position: absolute;
+    right: 0;
+    top: var(--navbar-height);
+    box-sizing: border-box;
+    padding-left: 30px;
+    color: white;
 }
