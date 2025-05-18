@@ -50,9 +50,10 @@ document.querySelectorAll('#navbar-pages div').forEach(el => {
     });
 });
 
-let diff;
+let diff = "Unreal";
 function populateList() {
     document.getElementById("list").innerHTML = "";
+    if (list == "main") diff = "Unreal";
 
     for (let tower of data[list]) {
         let name;
