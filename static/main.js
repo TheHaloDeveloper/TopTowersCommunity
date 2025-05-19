@@ -66,13 +66,13 @@ function populateList() {
     if (list == "main") diff = "Unreal";
 
     for (let tower of data[list]) {
-        let name = getTowerName(tower[1]);
-        if (tower[3]) {
-            diff = getDifficultyName(parseFloat(tower[3]))
+        let name = getTowerName(tower[1].value);
+        if (tower[3].value) {
+            diff = getDifficultyName(parseFloat(tower[3].value))
         }
         
         let extra = "";
-        let rank = tower[0];
+        let rank = tower[0].value;
         if (rank <= 3) {
             extra = 'class="podium"';
         }
@@ -87,18 +87,29 @@ function populateList() {
 }
 populateList();
 
+function getVideoId(url) {
+    if (url.includes("=")) {
+        return url.split("=")[1];
+    } else {
+        let parts = url.split("/");
+        return parts[parts.length - 1];
+    }
+}
+
 function openTower(x) {
     let factor = list == "legacy" ? 100 : 0;
     let i = x - factor;
     let info = data[list][i];
 
     let elem = $("#list").children()[i];
-    $("#towername").text(getTowerName(info[1]));
-
-    $("#difficulty").text(`${info[2].trim()} ${elem.dataset.difficulty}`);
+    $("#towername").text(getTowerName(info[1].value));
+    $("#difficulty").text(`${info[2].value} ${elem.dataset.difficulty}`);
     $("#difficulty").css("color", elem.style.backgroundColor);
-    $("#creators").text(info[5].trim());
-    $("#verifier").text(info[4].trim());
-    $("#location").text(info[6].trim());
+    $("#creators").text(info[5].value);
+    $("#verifier").text(info[4].value);
+    $("#location").text(info[6].value);
+
+    let url = `https://www.youtube.com/embed/${getVideoId(info[4].link)}`;
+    $("#verification").attr("src", url);
 }
 openTower(0);
