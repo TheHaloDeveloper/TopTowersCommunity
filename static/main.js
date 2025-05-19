@@ -89,9 +89,13 @@ populateList();
 
 function openTower(x) {
     let factor = list == "legacy" ? 100 : 0;
-    let info = data[list][x - factor];
+    let i = x - factor;
+    let info = data[list][i];
 
+    let color = document.querySelector("#list").children[i].style.backgroundColor;
     document.querySelector("#towername").innerHTML = getTowerName(info[1]);
+    document.querySelector("#towername").style.color = color;
+
     document.querySelector("#creators").innerHTML = info[5].trim();
     document.querySelector("#verifier").innerHTML = info[4].trim();
     document.querySelector("#location").innerHTML = info[6].trim();
