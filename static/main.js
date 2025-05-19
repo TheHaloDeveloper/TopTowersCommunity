@@ -50,19 +50,23 @@ document.querySelectorAll('#navbar-pages div').forEach(el => {
     });
 });
 
+function getTowerName(x) {
+    let name;
+    try {
+        name = x.split("(")[1].replace(")", "");
+    } catch {
+        name = x;
+    }
+    return name.trim();
+}
+
 let diff = "Unreal";
 function populateList() {
     document.getElementById("list").innerHTML = "";
     if (list == "main") diff = "Unreal";
 
     for (let tower of data[list]) {
-        let name;
-        try {
-            name = tower[1].split("(")[1].replace(")", "");
-        } catch {
-            name = tower[1];
-        }
-        
+        let name = getTowerName(tower[1]);
         if (tower[3]) {
             diff = getDifficultyName(parseFloat(tower[3]))
         }
@@ -86,7 +90,7 @@ populateList();
 function openTower(x) {
     let info = data[list][x];
 
-    document.querySelector("#towername").innerHTML = info[1].split("(")[1].split(")")[0].trim();
+    document.querySelector("#towername").innerHTML = getTowerName(info[1]);
     document.querySelector("#creators").innerHTML = info[5].trim();
     document.querySelector("#verifier").innerHTML = info[4].trim();
     document.querySelector("#location").innerHTML = info[6].trim();
