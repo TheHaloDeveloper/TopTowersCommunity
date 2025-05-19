@@ -74,7 +74,7 @@ function populateList() {
         }
 
         document.getElementById("list").innerHTML += `
-            <div class="list-item" style="color: rgb(${getColor(parseInt(rank), diff)}); background-color: ${colors[diff]}">
+            <div class="list-item" style="color: rgb(${getColor(parseInt(rank), diff)}); background-color: ${colors[diff]}" onclick="openTower(this)">
                 <span class="rank">#${rank}</span>&emsp;
                 <span ${extra}>${name}</span>
             </div>
@@ -82,3 +82,7 @@ function populateList() {
     }
 }
 populateList();
+
+function openTower(x) {
+    console.log(x);
+}
