@@ -92,13 +92,13 @@ function openTower(x) {
     let i = x - factor;
     let info = data[list][i];
 
-    let elem = document.querySelector("#list").children[i];
-    document.querySelector("#towername").innerHTML = getTowerName(info[1]);
+    let elem = $("#list").children()[i];
+    $("#towername").text(getTowerName(info[1]));
 
-    document.querySelector("#difficulty").innerHTML = `${info[2].trim()} ${elem.dataset.difficulty}`;
-    document.querySelector("#difficulty").style.color = elem.style.backgroundColor;
-    document.querySelector("#creators").innerHTML = info[5].trim();
-    document.querySelector("#verifier").innerHTML = info[4].trim();
-    document.querySelector("#location").innerHTML = info[6].trim();
+    $("#difficulty").text(`${info[2].trim()} ${elem.dataset.difficulty}`);
+    $("#difficulty").css("color", elem.style.backgroundColor);
+    $("#creators").text(info[5].trim());
+    $("#verifier").text(info[4].trim());
+    $("#location").text(info[6].trim());
 }
 openTower(0);
