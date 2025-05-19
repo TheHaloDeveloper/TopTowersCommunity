@@ -105,11 +105,13 @@ function openTower(x) {
 
     let elem = $("#list").children()[i];
     $("#towername").text(getTowerName(info[1].value));
+    $("#towername").attr("href", info[1].link);
     $("#difficulty").text(`${info[2].value} ${elem.dataset.difficulty}`);
     $("#difficulty").css("color", elem.style.backgroundColor);
     $("#creators").text(info[5].value);
     $("#verifier").text(info[4].value);
     $("#location").text(info[6].value);
+    $("#location").attr("href", info[6].link);
 
     let id = getVideoId(info[4].link);
     let url;
