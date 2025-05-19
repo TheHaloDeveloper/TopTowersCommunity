@@ -88,7 +88,8 @@ function populateList() {
 populateList();
 
 function openTower(x) {
-    let info = data[list][x];
+    let factor = list == "legacy" ? 100 : 0;
+    let info = data[list][x - factor];
 
     document.querySelector("#towername").innerHTML = getTowerName(info[1]);
     document.querySelector("#creators").innerHTML = info[5].trim();
