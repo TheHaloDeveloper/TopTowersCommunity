@@ -78,7 +78,7 @@ function populateList() {
         }
 
         document.getElementById("list").innerHTML += `
-            <div class="list-item" style="color: rgb(${getColor(parseInt(rank), diff)}); background-color: ${colors[diff]}" onclick="openTower(parseInt(this.children[0].innerHTML.slice(1)) - 1)">
+            <div class="list-item" data-difficulty="${diff}" style="color: rgb(${getColor(parseInt(rank), diff)}); background-color: ${colors[diff]}" onclick="openTower(parseInt(this.children[0].innerHTML.slice(1)) - 1)">
                 <span class="rank">#${rank}</span>&emsp;
                 <span ${extra}>${name}</span>
             </div>
@@ -92,10 +92,11 @@ function openTower(x) {
     let i = x - factor;
     let info = data[list][i];
 
-    let color = document.querySelector("#list").children[i].style.backgroundColor;
+    let elem = document.querySelector("#list").children[i];
     document.querySelector("#towername").innerHTML = getTowerName(info[1]);
-    document.querySelector("#towername").style.color = color;
 
+    document.querySelector("#difficulty").innerHTML = `${info[2].trim()} ${elem.dataset.difficulty}`;
+    document.querySelector("#difficulty").style.color = elem.style.backgroundColor;
     document.querySelector("#creators").innerHTML = info[5].trim();
     document.querySelector("#verifier").innerHTML = info[4].trim();
     document.querySelector("#location").innerHTML = info[6].trim();
