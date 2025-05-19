@@ -133,3 +133,9 @@ body {
     padding-left: 30px;
     color: white;
 }
+
+#verification {
+    width: 50%;
+    aspect-ratio: 16 / 9;
+    border: none;
+}

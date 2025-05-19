@@ -88,6 +88,7 @@ function populateList() {
 populateList();
 
 function getVideoId(url) {
+    url = url.split("&")[0];
     if (url.includes("=")) {
         return url.split("=")[1];
     } else {
