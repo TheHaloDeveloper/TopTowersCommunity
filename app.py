@@ -7,10 +7,25 @@ load_dotenv()
 app = Flask(__name__)
 
 def getList(name):
-    url = f"https://sheets.googleapis.com/v4/spreadsheets/1bxhj0Xtixkpo_BtzsnIg-qwLTA7qdb7Y6fursQjRZKM/values/{name} List!B:N?key={os.getenv("GOOGLE_SHEETS_API_KEY")}"
+    url = f"https://sheets.googleapis.com/v4/spreadsheets/1bxhj0Xtixkpo_BtzsnIg-qwLTA7qdb7Y6fursQjRZKM?key={os.getenv('GOOGLE_SHEETS_API_KEY')}&includeGridData=true&ranges={name}%20List!B:N"
     response = requests.get(url)
-    values = response.json().get("values", [])
-    return [row for row in values[2:] if len(row) > 0 and row[0].strip()]
+    data = response.json()
+
+    rows = data["sheets"][0]["data"][0]["rowData"][2:]
+    result = []
+
+    for row in rows:
+        cells = row.get("values", [])
+        if len(cells) == 0 or not cells[0].get("formattedValue", "").strip():
+            continue
+        row_data = []
+        for cell in cells:
+            value = cell.get("formattedValue", "")
+            link = cell.get("hyperlink")
+            row_data.append({"value": value, "link": link})
+        result.append(row_data)
+
+    return result
 
 data = {
     "main": getList("Main"),
