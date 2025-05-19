@@ -88,6 +88,7 @@ function populateList() {
 populateList();
 
 function getVideoId(url) {
+    if (!url) return url;
     url = url.split("&")[0];
     if (url.includes("=")) {
         return url.split("=")[1];
@@ -110,7 +111,13 @@ function openTower(x) {
     $("#verifier").text(info[4].value);
     $("#location").text(info[6].value);
 
-    let url = `https://www.youtube.com/embed/${getVideoId(info[4].link)}`;
+    let id = getVideoId(info[4].link);
+    let url;
+    if (id) {
+        url = `https://www.youtube.com/embed/${id}`;
+    } else {
+        url = "";
+    }
     $("#verification").attr("src", url);
 }
 openTower(0);
