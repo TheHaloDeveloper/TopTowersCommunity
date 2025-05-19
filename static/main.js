@@ -84,5 +84,12 @@ function populateList() {
 populateList();
 
 function openTower(x) {
-    console.log(x);
+    let index = parseInt(x.children[0].innerHTML.slice(1)) - 1;
+    let info = data[list][index];
+    console.log(info);
+
+    document.querySelector("#towername").innerHTML = info[1].split("(")[1].split(")")[0].trim();
+    document.querySelector("#creators").innerHTML = info[5].trim();
+    document.querySelector("#verifier").innerHTML = info[4].trim();
+    document.querySelector("#location").innerHTML = info[6].trim();
 }
