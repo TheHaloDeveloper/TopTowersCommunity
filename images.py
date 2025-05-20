@@ -12,7 +12,8 @@ rows = data.get("values", [])[1:]
 res = {row[0]: row[1] for row in rows if len(row) >= 2}
 
 for k, v in res.items():
-    with urllib.request.urlopen(v) as url:
+    req = urllib.request.Request(v, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req) as url:
         output = open(f"static/images/{k}.png", "wb")
         output.write(url.read())
         output.close()

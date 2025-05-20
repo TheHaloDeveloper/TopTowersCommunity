@@ -77,18 +77,13 @@ function populateList() {
             extra = 'class="podium"';
         }
 
-        let img = "";
-        if (images[name]) {
-            img = images[name];
-        }
-
         document.getElementById("list").innerHTML += `
             <div class="list-item" data-difficulty="${diff}" style="color: rgb(${getColor(parseInt(rank), diff)}); background-color: ${colors[diff]}" onclick="openTower(parseInt(this.children[0].innerHTML.slice(1)) - 1)">
                 <div class="list-content">
                     <span class="rank">#${rank}</span>&emsp;
                     <span ${extra}>${name}</span>
                 </div>
-                <img class="list-image" src="${img}"/>
+                <img class="list-image" src="/static/images/${name}.png"/>
             </div>
         `;
     }
