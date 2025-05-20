@@ -22,13 +22,36 @@ body {
 }
 
 .list-item {
-    padding: 15px 25px;
     border-bottom: 1px solid #2c2c3c;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
     transition: transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.list-content {
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1;
+}
+
+.list-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 80px;
+    width: 50%;
+    object-fit: cover;
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+    z-index: 0;
+    pointer-events: none;
+    outline: none;
+    border: none;
 }
 
 .list-item:hover {
