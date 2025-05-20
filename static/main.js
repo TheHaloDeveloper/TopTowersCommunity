@@ -18,7 +18,6 @@ let colors = {
     "nil": ["#65666D", "none"]
 }
 
-let sc_plus = ["Horrific", "Unreal", "nil"];
 let white_diffs = ["Terrifying", "Catastrophic"];
 function getColor(rank, diff) {
     if (rank == 1) {
@@ -63,9 +62,6 @@ function getTowerName(x) {
 
 function getOutline(diff) {
     let c = colors[diff][0];
-    if (sc_plus.includes(diff)) {
-        return "text-shadow: none;"
-    }
     return `text-shadow: -1px -1px 0 ${c}, 0 -1px 0 ${c}, 1px -1px 0 ${c}, 1px 0 0 ${c}, 1px 1px 0 ${c}, 0 1px 0 ${c}, -1px 1px 0 ${c}, -1px 0 0 ${c};`;
 }
 
