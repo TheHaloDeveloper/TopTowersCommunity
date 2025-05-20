@@ -9,13 +9,13 @@ let difficulties = {
 }
 
 let colors = {
-    "Insane": "#0000FF",
-    "Extreme": "#0389FF",
-    "Terrifying": "#00FFFF",
-    "Catastrophic": "#FFFFFF",
-    "Horrific": "#9695FF",
-    "Unreal": "#5100CB",
-    "nil": "#65666D"
+    "Insane": ["#0000FF", "none"],
+    "Extreme": ["#0389FF", "none"],
+    "Terrifying": ["#00FFFF", "none"],
+    "Catastrophic": ["#FFFFFF", "none"],
+    "Horrific": ["#010B0B", "3px solid #9695FF"],
+    "Unreal": ["#080003", "3px solid #5100CB"],
+    "nil": ["#65666D", "none"]
 }
 
 let white_diffs = ["Terrifying", "Catastrophic"];
@@ -78,7 +78,7 @@ function populateList() {
         }
 
         document.getElementById("list").innerHTML += `
-            <div class="list-item" data-difficulty="${diff}" style="color: rgb(${getColor(parseInt(rank), diff)}); background-color: ${colors[diff]}" onclick="openTower(parseInt(this.children[0].innerHTML.slice(1)) - 1)">
+            <div class="list-item" data-difficulty="${diff}" style="color: rgb(${getColor(parseInt(rank), diff)}); background-color: ${colors[diff][0]}; border: ${colors[diff][1]}" onclick="openTower(parseInt(this.children[0].innerHTML.slice(1)) - 1)">
                 <div class="list-content">
                     <span class="rank">#${rank}</span>&emsp;
                     <span ${extra}>${name}</span>

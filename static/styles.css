@@ -22,7 +22,7 @@ body {
 }
 
 .list-item {
-    border-bottom: 1px solid #2c2c3c;
+    border-bottom: 1px solid #2c2c3c !important;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -30,6 +30,7 @@ body {
     transition: transform 0.2s ease;
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .list-content {
@@ -55,6 +56,7 @@ body {
     mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
     -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
 }
+
 .list-item:hover {
     transform: translateX(5px);
 }
