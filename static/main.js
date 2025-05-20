@@ -18,6 +18,7 @@ let colors = {
     "nil": ["#65666D", "none"]
 }
 
+let sc_plus = ["Horrific", "Unreal", "nil"];
 let white_diffs = ["Terrifying", "Catastrophic"];
 function getColor(rank, diff) {
     if (rank == 1) {
@@ -60,6 +61,14 @@ function getTowerName(x) {
     return name.trim();
 }
 
+function getOutline(diff) {
+    let c = colors[diff][0];
+    if (sc_plus.includes(diff)) {
+        return "text-shadow: none;"
+    }
+    return `text-shadow: -1px -1px 0 ${c}, 0 -1px 0 ${c}, 1px -1px 0 ${c}, 1px 0 0 ${c}, 1px 1px 0 ${c}, 0 1px 0 ${c}, -1px 1px 0 ${c}, -1px 0 0 ${c};`;
+}
+
 let diff = "Unreal";
 function populateList() {
     document.getElementById("list").innerHTML = "";
@@ -76,9 +85,6 @@ function populateList() {
         if (rank <= 3) {
             classes.push("podium");
         }
-        if (colors[diff][0] == "#FFFFFF") {
-            classes.push("outline");
-        }
         
         let extra = "";
         if (classes.length > 0) {
@@ -86,7 +92,7 @@ function populateList() {
         }
 
         document.getElementById("list").innerHTML += `
-            <div class="list-item" data-difficulty="${diff}" style="color: rgb(${getColor(parseInt(rank), diff)}); background-color: ${colors[diff][0]}; border: ${colors[diff][1]}" onclick="openTower(parseInt(this.children[0].children[0].innerHTML.slice(1)) - 1)">
+            <div class="list-item" data-difficulty="${diff}" style="color: rgb(${getColor(parseInt(rank), diff)}); background-color: ${colors[diff][0]}; border: ${colors[diff][1]}; ${getOutline(diff)}" onclick="openTower(parseInt(this.children[0].children[0].innerHTML.slice(1)) - 1)">
                 <div class="list-content">
                     <span class="rank">#${rank}</span>&emsp;
                     <span ${extra}>${name}</span>
