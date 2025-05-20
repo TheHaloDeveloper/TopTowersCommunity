@@ -27,6 +27,15 @@ def getList(name):
 
     return result
 
+def getImages():
+    url = f"https://sheets.googleapis.com/v4/spreadsheets/1I5vVIZO3gZXdBEjVJMY8TlQP5yo4_QQ5MDU7MxmtS-o/values/Images!A:B?key={os.getenv('GOOGLE_SHEETS_API_KEY')}"
+    response = requests.get(url)
+    data = response.json()
+
+    rows = data.get("values", [])[1:]
+    res = {row[0]: row[1] for row in rows if len(row) >= 2}
+    return res
+
 data = {
     "main": getList("Main"),
     "legacy": getList("Legacy")
@@ -34,7 +43,7 @@ data = {
 
 @app.route("/")
 def home():
-    return render_template("index.html", data=data)
+    return render_template("index.html", data=data, images=getImages())
 
 if __name__ == "__main__":
     app.run(debug=True)
