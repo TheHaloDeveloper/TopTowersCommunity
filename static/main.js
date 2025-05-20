@@ -78,7 +78,7 @@ function populateList() {
         }
 
         document.getElementById("list").innerHTML += `
-            <div class="list-item" data-difficulty="${diff}" style="color: rgb(${getColor(parseInt(rank), diff)}); background-color: ${colors[diff][0]}; border: ${colors[diff][1]}" onclick="openTower(parseInt(this.children[0].innerHTML.slice(1)) - 1)">
+            <div class="list-item" data-difficulty="${diff}" style="color: rgb(${getColor(parseInt(rank), diff)}); background-color: ${colors[diff][0]}; border: ${colors[diff][1]}" onclick="openTower(parseInt(this.children[0].children[0].innerHTML.slice(1)) - 1)">
                 <div class="list-content">
                     <span class="rank">#${rank}</span>&emsp;
                     <span ${extra}>${name}</span>
@@ -107,10 +107,17 @@ function openTower(x) {
     let info = data[list][i];
 
     let elem = $("#list").children()[i];
+    let bg = elem.style.backgroundColor;
+    if (bg == "rgb(8, 0, 3)") {
+        bg = colors["Unreal"][1].split("solid ")[1];
+    } else if (bg == "rgb(1, 11, 11)") {
+        bg = colors["Horrific"][1].split("solid ")[1];
+    }
+
     $("#towername").text(getTowerName(info[1].value));
     $("#towername").attr("href", info[1].link);
     $("#difficulty").text(`${info[2].value} ${elem.dataset.difficulty}`);
-    $("#difficulty").css("color", elem.style.backgroundColor);
+    $("#difficulty").css("color", bg);
     $("#creators").text(info[5].value);
     $("#verifier").text(info[4].value);
     $("#location").text(info[6].value);
