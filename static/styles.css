@@ -47,13 +47,14 @@ body {
     height: 80px;
     width: 50%;
     object-fit: cover;
-    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
     z-index: 0;
     pointer-events: none;
-    outline: none;
     border: none;
+    outline: none;
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+    mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
 }
-
 .list-item:hover {
     transform: translateX(5px);
 }
