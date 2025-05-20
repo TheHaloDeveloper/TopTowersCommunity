@@ -71,10 +71,18 @@ function populateList() {
             diff = getDifficultyName(parseFloat(tower[3].value))
         }
         
-        let extra = "";
+        let classes = [];
         let rank = tower[0].value;
         if (rank <= 3) {
-            extra = 'class="podium"';
+            classes.push("podium");
+        }
+        if (colors[diff][0] == "#FFFFFF") {
+            classes.push("outline");
+        }
+        
+        let extra = "";
+        if (classes.length > 0) {
+            extra = `class="${classes.join(" ")}"`;
         }
 
         document.getElementById("list").innerHTML += `
