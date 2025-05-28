@@ -1,10 +1,14 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 import os
 import requests
 from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static/images'), 'ttc.png', mimetype='image/png')
 
 def getList(name):
     url = f"https://sheets.googleapis.com/v4/spreadsheets/1bxhj0Xtixkpo_BtzsnIg-qwLTA7qdb7Y6fursQjRZKM?key={os.getenv('GOOGLE_SHEETS_API_KEY')}&includeGridData=true&ranges={name}%20List!B:N"
