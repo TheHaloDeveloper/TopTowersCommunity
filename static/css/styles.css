@@ -77,14 +77,21 @@ body {
     position: relative;
 }
 
-#left {
+.nav-group {
     position: absolute;
-    left: 20px;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     align-items: center;
     gap: 30px;
+}
+
+#left {
+    left: 20px;
+}
+
+#right {
+    right: 20px;
 }
 
 #spreadsheet-link {
@@ -95,24 +102,24 @@ body {
     margin-right: 50px;
 }
 
-#navbar-pages {
+.navbar-pages {
     display: flex;
     gap: 20px;
 }
 
-#navbar-pages div {
+.navbar-pages div {
     color: white;
     font-size: 16px;
     cursor: pointer;
 }
 
-#navbar-pages div,
+.navbar-pages div,
 #spreadsheet-link {
     position: relative;
     transition: color 0.3s ease;
 }
 
-#navbar-pages div::after,
+.navbar-pages div::after,
 #spreadsheet-link::after {
     content: "";
     position: absolute;
@@ -126,16 +133,16 @@ body {
     transition: transform 0.3s ease;
 }
 
-#navbar-pages div:hover::after,
+.navbar-pages div:hover::after,
 #spreadsheet-link:hover::after {
     transform: translateX(-50%) scaleX(1);
 }
 
-#navbar-pages .active {
+.navbar-pages .active {
     color: #4aa4ff;
 }
 
-#navbar-pages .active::after {
+.navbar-pages .active::after {
     background-color: #4aa4ff;
     transform: translateX(-50%) scaleX(1);
 }

@@ -63,9 +63,9 @@ function getDifficultyName(diff) {
 }
 
 let list = "main";
-document.querySelectorAll('#navbar-pages div').forEach(el => {
+document.querySelectorAll('.navbar-pages div').forEach(el => {
     el.addEventListener('click', () => {
-        document.querySelectorAll('#navbar-pages div').forEach(d => d.classList.remove('active'));
+        document.querySelectorAll('.navbar-pages div').forEach(d => d.classList.remove('active'));
         el.classList.add('active');
         let clicked = el.innerHTML.split(" ")[0].toLowerCase();
         if (clicked != list) {
