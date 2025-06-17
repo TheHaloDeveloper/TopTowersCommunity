@@ -142,6 +142,8 @@ body {
 
 #extra {
     line-height: 5px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 #info {
