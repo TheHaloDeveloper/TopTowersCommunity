@@ -26,7 +26,8 @@ def getList(name):
         for cell in cells:
             value = cell.get("formattedValue", "")
             link = cell.get("hyperlink")
-            row_data.append({"value": value, "link": link})
+            comment = cell.get("note")
+            row_data.append({"value": value, "link": link, "comment": comment})
         result.append(row_data)
 
     return result

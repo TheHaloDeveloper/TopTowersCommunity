@@ -136,6 +136,14 @@ function getVideoId(url) {
     }
 }
 
+function formatCreators(x) {
+    if (x.value == "Various Creators") {
+        return x.comment.replaceAll("- ", "").split("\n").join(", ");
+    } else {
+        return x.value;
+    }
+}
+
 function openTower(x) {
     let factor = list == "legacy" ? 100 : 0;
     let i = x - factor;
@@ -154,7 +162,7 @@ function openTower(x) {
     $("#towername").attr("href", info[1].link);
     $("#difficulty").text(`${info[2].value} ${elem.dataset.difficulty}`);
     $("#difficulty").css("color", bg);
-    $("#creators").text(info[5].value);
+    $("#creators").text(formatCreators(info[5]));
     $("#verifier").text(info[4].value);
     $("#location").text(info[6].value);
     $("#location").attr("href", info[6].link);
