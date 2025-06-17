@@ -18,6 +18,19 @@ let colors = {
     "nil": ["#65666D", "none"]
 }
 
+let qualities = {
+    "SS": "#ff71df",
+    "S+": "#ff6ba3",
+    "S": "#ff7f7f",
+    "A": "#febf7f",
+    "B": "#ffdf80",
+    "C": "#ffff7f",
+    "D": "#c0ff7f",
+    "F": "#7fffff",
+    "X": "#8485ff",
+    "U": "#b7b7b7"
+}
+
 let white_diffs = ["Terrifying", "Catastrophic"];
 function getColor(rank, diff) {
     if (rank == 1) {
@@ -115,6 +128,7 @@ function openTower(x) {
     let factor = list == "legacy" ? 100 : 0;
     let i = x - factor;
     let info = data[list][i];
+    console.log(info)   
 
     let elem = $("#list").children()[i];
     let bg = elem.style.backgroundColor;
@@ -132,6 +146,9 @@ function openTower(x) {
     $("#verifier").text(info[4].value);
     $("#location").text(info[6].value);
     $("#location").attr("href", info[6].link);
+    let quality = info[12].value;
+    $("#quality").text(quality);
+    $("#quality").css("color", qualities[quality] || qualities[quality.slice(0, -1)]);
 
     let id = getVideoId(info[4].link);
     let url;
