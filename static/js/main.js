@@ -31,6 +31,18 @@ let qualities = {
     "U": "#b7b7b7"
 }
 
+let lengths = {
+    "Very Short": "#b4a7d6",
+    "Short": "#a4c2f4",
+    "Moderate": "#a2c4c9",
+    "Long": "#b5d7a8",
+    "Very Long": "#ffe599",
+    "Extremely Long": "#f9cb9c",
+    "Ridiculously Long": "#ea9999",
+    "Absurdly Long": "#df7a7a",
+    "Inhumanely Long": "#b7b7b7"
+}
+
 let white_diffs = ["Terrifying", "Catastrophic"];
 function getColor(rank, diff) {
     if (rank == 1) {
@@ -149,6 +161,9 @@ function openTower(x) {
     let quality = info[12].value;
     $("#quality").text(quality);
     $("#quality").css("color", qualities[quality] || qualities[quality.slice(0, -1)]);
+    let length = info[9].value;
+    $("#length").text(length);
+    $("#length").css("color", lengths[length.split(" (")[0]]);
 
     let id = getVideoId(info[4].link);
     let url;
