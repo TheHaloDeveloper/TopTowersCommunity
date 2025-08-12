@@ -17,7 +17,7 @@ for k, v in res.items():
         
     req = urllib.request.Request(v, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req) as url:
-        output = open(f"static/images/{k}.png", "wb")
+        output = open(f"public/images/{k}.png", "wb")
         output.write(url.read())
         output.close()
         
