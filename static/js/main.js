@@ -118,7 +118,7 @@ function populateList() {
                     <span class="rank">#${rank}</span>&emsp;
                     <span ${extra}>${name}</span>
                 </div>
-                <img class="list-image" src="/images/${name}.png"/>
+                <img class="list-image" src="/static/images/${name}.png"/>
             </div>
         `;
     }
