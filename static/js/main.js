@@ -118,10 +118,16 @@ function populateList() {
                     <span class="rank">#${rank}</span>&emsp;
                     <span ${extra}>${name}</span>
                 </div>
-                <img class="list-image" src="/static/images/${name.replaceAll(" ", "_")}.png"/>
+                <img class="list-image" loading="lazy" data-src="/static/images/${name.replaceAll(" ", "_")}.png"/>
             </div>
         `;
     }
+
+    setTimeout(() => {
+        document.querySelectorAll('.list-image').forEach(img => {
+            img.src = img.dataset.src;
+        });
+    }, 50);
 }
 populateList();
 
