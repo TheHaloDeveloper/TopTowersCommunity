@@ -5,7 +5,8 @@ from dotenv import load_dotenv
 import time
 load_dotenv()
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static', static_folder='static')
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 60 * 60 * 24 * 30
 
 _cache = {}
 _last_fetch = 0
@@ -69,4 +70,4 @@ def home():
     return render_template("index.html", data=data)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False)
