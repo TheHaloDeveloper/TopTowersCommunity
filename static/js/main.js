@@ -91,6 +91,8 @@ function getOutline(diff) {
 }
 
 let diff = "Unreal";
+let imageCache = {};
+
 function populateList() {
     document.getElementById("list").innerHTML = "";
     if (list == "main") diff = "Unreal";
@@ -125,7 +127,13 @@ function populateList() {
 
     setTimeout(() => {
         document.querySelectorAll('.list-image').forEach(img => {
-            img.src = img.dataset.src;
+            let url = img.dataset.src;
+            if (imageCache[url]) {
+                img.src = imageCache[url];
+            } else {
+                imageCache[url] = url;
+                img.src = url;
+            }
         });
     }, 50);
 }
